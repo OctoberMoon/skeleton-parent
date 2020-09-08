@@ -11,16 +11,21 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use Hyperf\Logger\LoggerFactory;
+use Hyperf\Logger\Logger;
+
 class IndexController extends AbstractController
 {
     public function index()
     {
-        $user = $this->request->input('user', 'Hyperf');
-        $method = $this->request->getMethod();
-
-        return [
-            'method' => $method,
-            'message' => "Hello {$user}.",
-        ];
+        logger('cloud', 'default')->info('ewdsfsgsgs');
+        return $this->response->success(111,11);
+//        $user = $this->request->input('user', 'Hyperf');
+//        $method = $this->request->getMethod();
+//
+//        return [
+//            'method' => $method,
+//            'message' => "Hello {$user}.111111222",
+//        ];
     }
 }

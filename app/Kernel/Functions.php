@@ -33,6 +33,48 @@ if (!function_exists('di')) {
     }
 }
 
+if (!function_exists('service')) {
+
+    /**
+     * service
+     * 获取服务类实例
+     * @param $key
+     * @return mixed
+     */
+    function service($key)
+    {
+        $key = ucfirst($key);
+        $fileName = BASE_PATH . "/app/Service/{$key}.php";
+        $className = "App\\Service\\{$key}";
+
+        if (file_exists($fileName)) {
+            return di($className);
+        } else {
+            throw new \RuntimeException("服务{$key}不存在，文件不存在！",\App\Constants\ErrorCode::SERVER_ERROR);
+        }
+    }
+}
+
+/**
+ * 控制台日志
+ */
+if (!function_exists('stdLog')) {
+    function stdLog()
+    {
+        return di()->get(\Hyperf\Contract\StdoutLoggerInterface::class);
+    }
+}
+
+/**
+ * 文件日志
+ */
+if (!function_exists('logger')) {
+    function logger($name = 'hyperf', $group = 'default')
+    {
+        return di()->get(\Hyperf\Logger\LoggerFactory::class)->get($name, $group);
+    }
+}
+
 if (!function_exists('format_throwable')) {
     /**
      * Format a throwable to string.

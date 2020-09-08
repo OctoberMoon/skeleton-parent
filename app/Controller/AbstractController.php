@@ -5,15 +5,16 @@ declare(strict_types=1);
  * This file is part of Hyperf.
  *
  * @link     https://www.hyperf.io
- * @document https://hyperf.wiki
+ * @document https://doc.hyperf.io
  * @contact  group@hyperf.io
- * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
+
 namespace App\Controller;
 
+use App\Kernel\Http\Response;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Contract\RequestInterface;
-use Hyperf\HttpServer\Contract\ResponseInterface;
 use Psr\Container\ContainerInterface;
 
 abstract class AbstractController
@@ -32,7 +33,7 @@ abstract class AbstractController
 
     /**
      * @Inject
-     * @var ResponseInterface
+     * @var Response
      */
     protected $response;
 }
