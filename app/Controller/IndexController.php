@@ -21,15 +21,6 @@ class IndexController extends AbstractController
 {
     public function index()
     {
-        throw new BusinessException(ErrorCode::ACCOUNT_ERROR);
-        logger('cloud', 'default')->info('ewdsfsgsgs');
-        return $this->response->success(111, 11);
-//        $user = $this->request->input('user', 'Hyperf');
-//        $method = $this->request->getMethod();
-//
-//        return [
-//            'method' => $method,
-//            'message' => "Hello {$user}.111111222",
-//        ];
+        return $this->response->success('test');
     }
 }
